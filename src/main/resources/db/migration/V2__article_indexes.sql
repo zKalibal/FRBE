@@ -1,0 +1,1 @@
+-- add indexes for article filters

@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: dev          # ⬅️ deve essere "dev"
+
+# ---------- DEV ----------
+---
+spring:
+  config.activate.on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:finalround;MODE=MySQL;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  flyway:
+    enabled: false
+  h2.console.enabled: true
+
+# ---------- PROD ----------
+---
+spring:
+  config.activate.on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/final_round
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: fr_user
+    password: fr_pass
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
